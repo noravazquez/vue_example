@@ -1,17 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld />
+  <button @click="show = !show">Menu</button>
+  <Transition name="fade">
+    <Menu v-show="show"></Menu>
+  </Transition>
+
 </template>
 
 <script>
-import { defineAsyncComponent } from 'vue';
-
-const HelloWorld = defineAsyncComponent(() => import('./components/HelloWorld.vue'));
+import Menu from './components/Menu.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Menu
+  },
+  data() {
+    return {
+      show: false
+    }
   }
 }
 </script>
@@ -24,5 +30,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active, 
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
 </style>
