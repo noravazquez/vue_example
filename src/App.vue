@@ -1,20 +1,17 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <component :is="dinamico"></component>
+  <HelloWorld />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { defineAsyncComponent } from 'vue';
+
+const HelloWorld = defineAsyncComponent(() => import('./components/HelloWorld.vue'));
 
 export default {
   name: 'App',
   components: {
     HelloWorld
-  },
-  data() {
-    return {
-      dinamico: "HelloWorld"
-    }
   }
 }
 </script>
