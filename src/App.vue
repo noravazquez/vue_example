@@ -1,23 +1,16 @@
 <template>
-  <button @click="show = !show">Menu</button>
-  <Transition name="fade">
-    <Menu v-show="show"></Menu>
-  </Transition>
-
+  <div>
+    <Modal />
+  </div>
 </template>
 
 <script>
-import Menu from './components/Menu.vue'
+import Modal from './components/Modal.vue'
 
 export default {
   name: 'App',
   components: {
-    Menu
-  },
-  data() {
-    return {
-      show: false
-    }
+    Modal
   }
 }
 </script>
@@ -30,15 +23,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-enter-active, 
-.fade-leave-active {
-  transition: opacity 0.5s ease;
 }
 </style>
