@@ -1,23 +1,24 @@
 <template>
     <div>
-        <div>{{ counter }}</div>
-        <div>{{ obj }}</div>
+        <div>{{ obj.counter }}</div>
     </div>
 </template>
 
 <script>
-import { reactive, ref } from "vue";
+import { reactive, watch } from "vue";
 
 export default {
     setup() {
-        const counter = ref(0);
         const obj = reactive({ counter: 0});
 
-        setInterval(() => counter.value++, 500);
         setInterval(() => obj.counter++, 500);
 
+        watch(() => obj.counter, (valor, anterior) => {
+            console.log(valor, anterior);
+        });
+
         return {
-            counter, obj,
+            obj,
         }
     },
 };
