@@ -1,13 +1,21 @@
 <template>
-  <Home first-name="Nora" last-name="Vazquez" otro="algo"></Home>
+  <div>
+    <h4>Bienvenido/a</h4>
+    <Home first-name="Nora" last-name="Vazquez"></Home>
+  </div>
 </template>
 
 <script>
 import Home from './components/Home.vue'
+import { provide, ref } from "vue";
 export default {
   name: 'App',
   components: {
     Home,
+  },
+  setup() {
+    const username = ref("noraxx");
+    provide("username", username);
   }
 }
 </script>
