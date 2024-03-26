@@ -2,11 +2,12 @@
     <div>
         <div>Fullname: {{ fullName }}</div>
         <div>Username: {{ username }}</div>
+        <button ref="btn">Click!</button>
     </div>
 </template>
 
 <script>
-import { toRefs, computed, inject } from "vue";
+import { ref, toRefs, computed, inject, watch } from "vue";
 
 export default {
     props: {
@@ -26,9 +27,18 @@ export default {
             fullName
         });
 
+        const btn = ref(null);
+
+        console.log(btn.value);
+
+        watch(btn, (valor) => {
+            console.log(valor);
+        });
+
         return {
             fullName,
             username,
+            btn,
         };
     },
 };
