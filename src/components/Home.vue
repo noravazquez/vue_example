@@ -6,40 +6,31 @@
     </div>
 </template>
 
-<script>
-import { ref, toRefs, computed, inject, watch } from "vue";
+<script setup>
+import { defineProps, defineExpose, ref, toRefs, computed, inject, watch } from "vue";
 
-export default {
-    props: {
+    const props = defineProps({
         firstName: String,
         lastName: String,
-    },
-    setup(props, { expose }) {
-        const { firstName, lastName } = toRefs(props);
+    });
 
-        const fullName = computed(() => {
-            return `${firstName.value} ${lastName.value}`;
-        });
+    const { firstName, lastName } = toRefs(props);
 
-        const username = inject("username");
+    const fullName = computed(() => {
+        return `${firstName.value} ${lastName.value}`;
+    });
 
-        expose({
-            fullName
-        });
+    const username = inject("username");
 
-        const btn = ref(null);
+    defineExpose({
+        fullName
+    });
 
-        console.log(btn.value);
+    const btn = ref(null);
 
-        watch(btn, (valor) => {
-            console.log(valor);
-        });
+    console.log(btn.value);
 
-        return {
-            fullName,
-            username,
-            btn,
-        };
-    },
-};
+    watch(btn, (valor) => {
+        console.log(valor);
+    });
 </script>
